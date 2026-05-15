@@ -140,7 +140,7 @@ export default function Navbar() {
                   </li>
                   <li>
                      <a
-                        href="#"
+                        href="/login"
                         className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
                      >
                         Log in
@@ -151,7 +151,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-4 lg:ml-4">
                <a
-                  href="#"
+                  href="/register"
                   className="py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                >
                   Sign up

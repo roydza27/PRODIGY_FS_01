@@ -11,21 +11,35 @@ const HomePage = () => {
       <Banner />
 
       <main className="flex flex-col">
-        <HeroSection />
+        <section id="hero">
+          <HeroSection />
+        </section>
 
-        <section className="pt-28 md:pt-36">
+        <section
+          id="features"
+          className="pt-28 md:pt-36 scroll-mt-24"
+        >
           <FeaturesSection />
         </section>
 
-        <section className="pt-32 md:pt-40">
+        <section
+          id="stats"
+          className="pt-32 md:pt-40 scroll-mt-24"
+        >
           <StatsSection />
         </section>
 
-        <section className="pt-32 md:pt-40">
+        <section
+          id="content"
+          className="pt-32 md:pt-40 scroll-mt-24"
+        >
           <ContentSection />
         </section>
 
-        <section className="pt-32 pb-24 md:pt-40 md:pb-32">
+        <section
+          id="cta"
+          className="pt-32 pb-24 md:pt-40 md:pb-32 scroll-mt-24"
+        >
           <CTASection />
         </section>
       </main>

@@ -5,9 +5,10 @@ export default function Banner() {
          className="bg-slate-900 px-4 py-2.5 relative flex items-center justify-center text-center border-b border-slate-800 md:px-6 dark:bg-neutral-800 dark:border-neutral-700">
          <p className="text-sm text-slate-50 font-medium pr-6 leading-relaxed"><span aria-hidden="true">🎉</span> Limited Time
             Offer! Enjoy 20% OFF your first purchase –
-            <a href="#"
-               className="ml-1 underline underline-offset-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Shop
-               Now!</a>
+            <a href="/register"
+               className="ml-1 underline underline-offset-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+               Register Now!
+            </a>
          </p>
 
          <button type="button" aria-label="Dismiss notification banner"

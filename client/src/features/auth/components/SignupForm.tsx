@@ -1,109 +1,167 @@
-export default function SignupForm() {
-   return (
-      <div className="mx-auto w-full max-w-lg rounded-xl border border-slate-800 p-6 shadow-lg md:p-8">
-         
-         {/* Headers - Centered */}
-        <div className="mb-8 text-center">
-            <h1 className="mb-2 text-3xl font-bold text-white">
-                Create an account
-            </h1>
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "@/features/auth/services/auth.service";
 
-            <p className="text-sm text-slate-400">
-                Sign up to get instant access to your dashboard.
-            </p>
+export default function SignupForm() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (!acceptTerms) {
+      setError("You must accept the terms and conditions");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await registerUser({ name, email, password });
+      navigate("/login");
+    } catch (err) {
+      setError("Registration failed. Please try again with a different email.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="mx-auto w-full max-w-lg rounded-xl border border-slate-800 p-6 shadow-lg md:p-8">
+      <div className="mb-8 text-center">
+        <h1 className="mb-2 text-3xl font-bold text-white">
+          Create an account
+        </h1>
+
+        <p className="text-sm text-slate-400">
+          Sign up to get instant access to your dashboard.
+        </p>
+      </div>
+
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name" className="mb-2 block text-left text-sm font-medium text-slate-400">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Doe"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+          />
         </div>
 
-         <form className="space-y-6">
-            
-            {/* Email - Centered Label */}
-            <div>
-               <label htmlFor="email" className="mb-2 text-slate-400 font-medium text-sm block text-left">
-                  Email
-               </label>
-               <input type="email" id="email" name="email" placeholder="john@example.com" required
-                  className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-none focus:ring-2 focus:ring-blue-600" />
-            </div>
+        <div>
+          <label htmlFor="email" className="mb-2 block text-left text-sm font-medium text-slate-400">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="john@example.com"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+          />
+        </div>
 
-            {/* Password - Centered Label */}
-            <div>
-               <label htmlFor="password" className="mb-2 text-slate-400 font-medium text-sm block text-left">
-                  Password
-               </label>
-               <input type="password" id="password" name="password" placeholder="••••••••" required
-                  className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-none focus:ring-2 focus:ring-blue-600" />
-            </div>
+        <div>
+          <label htmlFor="password" className="mb-2 block text-left text-sm font-medium text-slate-400">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+          />
+        </div>
 
-            {/* Confirm Password - Centered Label */}
-            <div>
-               <label htmlFor="confirm-password" className="mb-2 text-slate-400 font-medium text-sm block text-left">
-                  Confirm password
-               </label>
-               <input type="password" id="confirm-password" name="confirm-password" placeholder="••••••••" required
-                  className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-none focus:ring-2 focus:ring-blue-600" />
-            </div>
+        <div>
+          <label
+            htmlFor="confirm-password"
+            className="mb-2 block text-left text-sm font-medium text-slate-400"
+          >
+            Confirm password
+          </label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            placeholder="••••••••"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+          />
+        </div>
 
-            {/* Checkbox - Centered */}
-            <div className="flex items-center justify-center flex-wrap gap-2">
-               <label className="flex items-center cursor-pointer">
-                  <input id="tmc" name="tmc" type="checkbox" required 
-                         className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600" />
-                  <span className="ml-3 text-sm text-slate-400">
-                     I accept the
-                  </span>
-               </label>
+        <div className="flex items-center justify-center flex-wrap gap-2">
+          <label className="flex items-center cursor-pointer">
+            <input
+              id="tmc"
+              name="tmc"
+              type="checkbox"
+              checked={acceptTerms}
+              onChange={(e) => setAcceptTerms(e.target.checked)}
+              className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600"
+            />
+            <span className="ml-3 text-sm text-slate-400">
+              I accept the
+            </span>
+          </label>
 
-               <a href="/terms" className="text-sm font-medium text-blue-500 hover:text-blue-400 hover:underline">
-                  Terms and Conditions
-               </a>
-            </div>
+          <a
+            href="/terms"
+            className="text-sm font-medium text-blue-500 hover:text-blue-400 hover:underline"
+          >
+            Terms and Conditions
+          </a>
+        </div>
 
-            {/* Main Button */}
-            <button type="submit"
-               className="w-full py-2.5 px-4 text-sm rounded-md font-semibold tracking-wide text-white bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500">
-               Create an account
-            </button>
+        {error ? <p className="text-sm text-red-500 text-center">{error}</p> : null}
 
-            {/* Social Divider */}
-            <div className="relative flex items-center py-2">
-               <div className="flex-grow border-t border-slate-800"></div>
-               <span className="flex-shrink-0 mx-4 text-slate-500 text-xs">Or sign up with</span>
-               <div className="flex-grow border-t border-slate-800"></div>
-            </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold tracking-wide text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60"
+        >
+          {loading ? "Creating account..." : "Create an account"}
+        </button>
 
-            {/* Social Buttons Stacked (Darkened Borders) */}
-            <div className="flex flex-col gap-3">
-               <button type="button" className="flex justify-center items-center gap-2 py-2 px-3 border border-slate-800 rounded-md hover:bg-slate-800 transition-colors text-sm font-medium text-slate-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 512 512" aria-hidden="true">
-                     <path fill="#fbbd00" d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"/>
-                     <path fill="#0f9d58" d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216C305.044 385.147 281.181 392 256 392z"/>
-                     <path fill="#31aa52" d="m139.131 325.477-86.308 86.308a260.085 260.085 0 0 0 22.158 25.235C123.333 485.371 187.62 512 256 512V392c-49.624 0-93.117-26.72-116.869-66.523z"/>
-                     <path fill="#3c79e6" d="M512 256a258.24 258.24 0 0 0-4.192-46.377l-2.251-12.299H256v120h121.452a135.385 135.385 0 0 1-51.884 55.638l86.216 86.216a260.085 260.085 0 0 0 25.235-22.158C485.371 388.667 512 324.38 512 256z"/>
-                     <path fill="#cf2d48" d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606C388.668 26.629 324.381 0 256 0l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z"/>
-                     <path fill="#eb4132" d="M256 120V0C187.62 0 123.333 26.629 74.98 74.98a259.849 259.849 0 0 0-22.158 25.235l86.308 86.308C162.883 146.72 206.376 120 256 120z"/>
-                  </svg>
-                  Google
-               </button>
-
-               <div className="grid grid-cols-2 gap-3">
-                  <button type="button" className="flex justify-center items-center gap-2 py-2 px-3 border border-slate-800 rounded-md hover:bg-slate-800 transition-colors text-sm font-medium text-slate-300">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-white" viewBox="0 0 22.773 22.773" aria-hidden="true">
-                        <path d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"/>
-                     </svg>
-                     Apple
-                  </button>
-                  <button type="button" className="flex justify-center items-center gap-2 py-2 px-3 border border-slate-800 rounded-md hover:bg-slate-800 transition-colors text-sm font-medium text-slate-300">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-blue-500" viewBox="0 0 167.657 167.657" aria-hidden="true">
-                        <path d="M83.829.349C37.532.349 0 37.881 0 84.178c0 41.523 30.222 75.911 69.848 82.57v-65.081H49.626v-23.42h20.222V60.978c0-20.037 12.238-30.956 30.115-30.956 8.562 0 15.92.638 18.056.919v20.944l-12.399.006c-9.72 0-11.594 4.618-11.594 11.397v14.947h23.193l-3.025 23.42H94.026v65.653c41.476-5.048 73.631-40.312 73.631-83.154 0-46.273-37.532-83.805-83.828-83.805z"/>
-                     </svg>
-                     Facebook
-                  </button>
-               </div>
-            </div>
-
-            <div className="text-slate-400 text-sm text-center mt-6">
-               Already have an account? <a href="/login" className="text-blue-500 hover:text-blue-400 hover:underline font-medium">Login here</a>
-            </div>
-         </form>
-      </div>
-   );
+        <div className="text-center text-sm text-slate-400">
+          Already have an account?{" "}
+          <a
+            href="/login"
+            className="font-medium text-blue-500 hover:text-blue-400 hover:underline"
+          >
+            Login here
+          </a>
+        </div>
+      </form>
+    </div>
+  );
 }
