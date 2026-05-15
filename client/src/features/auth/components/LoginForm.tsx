@@ -38,17 +38,17 @@ export default function LoginForm() {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="grid lg:grid-cols-2 items-center gap-8 md:gap-12 w-full">
-        <div className="border border-slate-800 rounded-xl p-6 max-w-md w-full mx-auto shadow-lg md:p-8 lg:mx-0 lg:ml-auto">
+        <div className="border border-[#27272A] bg-[#111113] rounded-2xl p-6 max-w-md w-full mx-auto shadow-lg md:p-8 lg:mx-0 lg:ml-auto">
           <div className="mb-8 text-center">
-            <h1 className="text-white text-4xl font-bold mb-4">Sign in</h1>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <h1 className="text-[#FAFAFA] font-heading text-3xl font-bold tracking-tight leading-tight mb-4">Sign in</h1>
+            <p className="text-[#A1A1AA] text-sm leading-relaxed">
               Sign in to your account to access your dashboard and manage your projects.
             </p>
           </div>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="mb-2 text-slate-400 font-medium text-sm block">
+              <label htmlFor="email" className="mb-2 text-[#A1A1AA] font-medium text-sm block">
                 Email
               </label>
               <input
@@ -59,12 +59,12 @@ export default function LoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-3 py-2.5 text-sm text-[#FAFAFA] rounded-xl bg-[#09090B] border border-[#27272A] w-full outline-none focus:ring-2 focus:ring-[#27272A]"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="mb-2 text-slate-400 font-medium text-sm block">
+              <label htmlFor="password" className="mb-2 text-[#A1A1AA] font-medium text-sm block">
                 Password
               </label>
               <input
@@ -75,7 +75,7 @@ export default function LoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="px-3 py-2.5 text-sm text-slate-900 rounded-md bg-white w-full outline-none focus:ring-2 focus:ring-blue-600"
+                className="px-3 py-2.5 text-sm text-[#FAFAFA] rounded-xl bg-[#09090B] border border-[#27272A] w-full outline-none focus:ring-2 focus:ring-[#27272A]"
               />
             </div>
 
@@ -87,14 +87,14 @@ export default function LoginForm() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600"
+                  className="w-4 h-4 rounded border-[#27272A] bg-[#09090B] text-[#FAFAFA] focus:ring-[#27272A]"
                 />
-                <span className="ml-3 text-sm text-slate-400">Remember me</span>
+                <span className="ml-3 text-sm text-[#A1A1AA]">Remember me</span>
               </label>
 
               <a
                 href="/forgotPassword"
-                className="text-sm font-medium text-blue-500 hover:text-blue-400 hover:underline"
+                className="text-sm font-medium text-[#FAFAFA] hover:text-[#A1A1AA] hover:underline"
               >
                 Forgot password?
               </a>
@@ -105,16 +105,16 @@ export default function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 text-sm rounded-md font-semibold tracking-wide text-white bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60"
+              className="w-full py-2.5 px-4 text-sm rounded-xl font-semibold tracking-wide text-[#FAFAFA] bg-[#FAFAFA] !text-[#09090B] hover:bg-[#E4E4E7] transition-all focus:outline-none focus:ring-2 focus:ring-[#27272A] disabled:opacity-60"
             >
               {loading ? "Signing in..." : "Sign in"}
             </button>
 
-            <div className="text-slate-400 text-sm text-center">
+            <div className="text-[#A1A1AA] text-sm text-center">
               Don't have an account?
               <a
                 href="/register"
-                className="text-blue-500 hover:text-blue-400 hover:underline ml-1 font-medium"
+                className="text-[#FAFAFA] hover:text-[#A1A1AA] hover:underline ml-1 font-medium"
               >
                 Sign up
               </a>

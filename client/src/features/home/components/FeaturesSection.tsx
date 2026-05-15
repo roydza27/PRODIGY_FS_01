@@ -6,7 +6,7 @@ const features = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="size-full fill-slate-900 dark:fill-slate-50"
+        className="size-full fill-[#FAFAFA] dark:fill-[#FAFAFA]"
         viewBox="0 0 100 100"
         aria-hidden="true"
       >
@@ -52,7 +52,7 @@ const features = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="size-full fill-slate-900 dark:fill-slate-50"
+        className="size-full fill-[#FAFAFA] dark:fill-[#FAFAFA]"
         viewBox="0 0 512 512"
         aria-hidden="true"
       >
@@ -66,7 +66,7 @@ const features = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="size-full fill-slate-900 dark:fill-slate-50"
+        className="size-full fill-[#FAFAFA] dark:fill-[#FAFAFA]"
         viewBox="0 0 512 512"
         aria-hidden="true"
       >
@@ -80,7 +80,7 @@ const features = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="size-full fill-slate-900 dark:fill-slate-50"
+        className="size-full fill-[#FAFAFA] dark:fill-[#FAFAFA]"
         viewBox="0 0 25 25"
         aria-hidden="true"
       >
@@ -96,7 +96,7 @@ const features = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="size-full fill-slate-900 dark:fill-slate-50"
+        className="size-full fill-[#FAFAFA] dark:fill-[#FAFAFA]"
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
@@ -115,11 +115,11 @@ export default function FeaturesSection() {
     <section className="px-4 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-7xl">
 				<div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center md:mb-16">
-					<h2 className="mb-5 text-3xl font-bold leading-tight text-slate-100 md:text-4xl">
+					<h2 className="mb-5 font-heading text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight leading-[0.95] leading-tight text-[#FAFAFA] md:text-4xl">
 						Work Easier Today
 					</h2>
 
-					<p className="max-w-2xl text-base leading-relaxed text-slate-400">
+					<p className="max-w-2xl text-base leading-relaxed text-[#A1A1AA]">
 						Unlock a world of possibilities with our exclusive features. Explore how our
 						unique offerings can transform your journey and empower you to achieve more.
 					</p>
@@ -129,24 +129,24 @@ export default function FeaturesSection() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-xl border border-slate-800 bg-white/5 p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-700 hover:bg-white/7"
+              className="rounded-2xl border border-[#27272A] bg-[#18181B] p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#27272A] hover:bg-[#111113]/7"
             >
-              <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 dark:bg-neutral-700 dark:text-slate-50">
+              <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#18181B] text-[#FAFAFA] dark:bg-neutral-700 dark:text-[#FAFAFA]">
                 {feature.icon}
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-slate-100">
+                <h3 className="font-heading text-lg font-bold tracking-tight text-[#FAFAFA]">
                   {feature.title}
                 </h3>
-                <p className="text-base leading-relaxed text-slate-400">
+                <p className="text-base leading-relaxed text-[#A1A1AA]">
                   {feature.description}
                 </p>
               </div>
 
               <a
                 href="#"
-                className="mt-6 inline-flex items-center text-sm font-semibold text-blue-500 transition hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+                className="mt-6 inline-flex items-center text-sm font-semibold text-[#FAFAFA] transition hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
               >
                 Learn more
                 <svg

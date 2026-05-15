@@ -41,7 +41,12 @@ const HomePage = () => {
           className="pt-32 pb-24 md:pt-40 md:pb-32 scroll-mt-24"
         >
           <CTASection />
+                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md">
+  Click Me
+</button>
         </section>
+
+
       </main>
     </div>
   );

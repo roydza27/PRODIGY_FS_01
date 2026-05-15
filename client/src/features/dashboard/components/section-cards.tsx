@@ -9,101 +9,101 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/components/ui/card"
-import { TrendingUpIcon, TrendingDownIcon } from "lucide-react"
+import { ArrowUpRight, ArrowDownRight } from "lucide-react"
 
 export function SectionCards() {
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
+    <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Total Revenue</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+          <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Total Revenue</CardDescription>
+          <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
             $1,250.00
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <TrendingUpIcon
+              <ArrowUpRight className="size-3.5"
               />
               +12.5%
             </Badge>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+        <CardFooter className="flex-col items-start gap-1 text-sm">
+          <div className="line-clamp-1 flex gap-1.5 font-medium text-[#FAFAFA] items-center">
             Trending up this month{" "}
-            <TrendingUpIcon className="size-4" />
+            <ArrowUpRight className="size-4 text-[#A1A1AA]" />
           </div>
-          <div className="text-muted-foreground">
+          <div className="text-[#A1A1AA]">
             Visitors for the last 6 months
           </div>
         </CardFooter>
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>New Customers</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+          <CardDescription className="font-mono text-[10px] uppercase tracking-widest">New Customers</CardDescription>
+          <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
             1,234
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <TrendingDownIcon
+              <ArrowDownRight className="size-3.5"
               />
               -20%
             </Badge>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+        <CardFooter className="flex-col items-start gap-1 text-sm">
+          <div className="line-clamp-1 flex gap-1.5 font-medium text-[#FAFAFA] items-center">
             Down 20% this period{" "}
-            <TrendingDownIcon className="size-4" />
+            <ArrowDownRight className="size-4 text-[#A1A1AA]" />
           </div>
-          <div className="text-muted-foreground">
+          <div className="text-[#A1A1AA]">
             Acquisition needs attention
           </div>
         </CardFooter>
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Active Accounts</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+          <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Active Accounts</CardDescription>
+          <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
             45,678
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <TrendingUpIcon
+              <ArrowUpRight className="size-3.5"
               />
               +12.5%
             </Badge>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+        <CardFooter className="flex-col items-start gap-1 text-sm">
+          <div className="line-clamp-1 flex gap-1.5 font-medium text-[#FAFAFA] items-center">
             Strong user retention{" "}
-            <TrendingUpIcon className="size-4" />
+            <ArrowUpRight className="size-4 text-[#A1A1AA]" />
           </div>
-          <div className="text-muted-foreground">Engagement exceed targets</div>
+          <div className="text-[#A1A1AA]">Engagement exceed targets</div>
         </CardFooter>
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Growth Rate</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+          <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Growth Rate</CardDescription>
+          <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
             4.5%
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <TrendingUpIcon
+              <ArrowUpRight className="size-3.5"
               />
               +4.5%
             </Badge>
           </CardAction>
         </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
+        <CardFooter className="flex-col items-start gap-1 text-sm">
+          <div className="line-clamp-1 flex gap-1.5 font-medium text-[#FAFAFA] items-center">
             Steady performance increase{" "}
-            <TrendingUpIcon className="size-4" />
+            <ArrowUpRight className="size-4 text-[#A1A1AA]" />
           </div>
-          <div className="text-muted-foreground">Meets growth projections</div>
+          <div className="text-[#A1A1AA]">Meets growth projections</div>
         </CardFooter>
       </Card>
     </div>

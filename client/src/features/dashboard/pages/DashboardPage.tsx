@@ -6,7 +6,7 @@ import data from "@/features/dashboard/data/data.json"
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 rounded">
       <SectionCards />
 
       <div className="px-0 lg:px-0">
@@ -14,6 +14,8 @@ export default function DashboardPage() {
       </div>
 
       <DataTable data={data} />
+
+      
     </div>
   )
 }

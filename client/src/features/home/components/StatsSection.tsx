@@ -32,10 +32,10 @@ const metrics = [
 export default function StatsSection() {
 
    return (
-      <section className="bg-gray-50 py-8 px-4 md:px-8 md:py-12 dark:bg-neutral-800">
+      <section className="bg-[#09090B] py-8 px-4 md:px-8 md:py-12 dark:bg-[#111113]">
          <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
             <div className="text-center mb-12 md:mb-16">
-               <h2 className="text-3xl font-bold text-slate-900 md:text-4xl dark:text-slate-50">
+               <h2 className="font-heading text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight leading-[0.95] text-[#FAFAFA]">
                   Application Metrics
                </h2>
             </div>
@@ -44,14 +44,14 @@ export default function StatsSection() {
                {metrics.map((item) => (
                   <li key={item.id} className="text-center">
                      <dl className="flex flex-col">
-                        <dt className="text-slate-900 text-base font-semibold dark:text-slate-50">
+                        <dt className="text-[#FAFAFA] text-base font-semibold dark:text-[#FAFAFA]">
                            {item.label}
                         </dt>
-                        <dd className="-order-1 text-slate-900 text-4xl font-bold mb-6 dark:text-slate-50">
+                        <dd className="-order-1 text-[#FAFAFA] font-heading text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight leading-[0.95] mb-6 dark:text-[#FAFAFA]">
                            {item.value}
-                           <span className="text-blue-600">{item.suffix}</span>
+                           <span className="text-[#FAFAFA]">{item.suffix}</span>
                         </dd>
-                        <dd className="text-sm text-slate-600 mt-3 leading-relaxed dark:text-slate-400">
+                        <dd className="text-sm text-[#A1A1AA] mt-3 leading-relaxed dark:text-[#A1A1AA]">
                            {item.description}
                         </dd>
                      </dl>

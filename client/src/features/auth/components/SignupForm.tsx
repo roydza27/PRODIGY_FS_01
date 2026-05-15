@@ -40,20 +40,20 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-lg rounded-xl border border-slate-800 p-6 shadow-lg md:p-8">
+    <div className="mx-auto w-full max-w-lg rounded-2xl border border-[#27272A] bg-[#111113] p-6 shadow-lg md:p-8">
       <div className="mb-8 text-center">
-        <h1 className="mb-2 text-3xl font-bold text-white">
+        <h1 className="mb-2 font-heading text-3xl font-bold tracking-tight leading-tight text-[#FAFAFA]">
           Create an account
         </h1>
 
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-[#A1A1AA]">
           Sign up to get instant access to your dashboard.
         </p>
       </div>
 
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name" className="mb-2 block text-left text-sm font-medium text-slate-400">
+          <label htmlFor="name" className="mb-2 block text-left text-sm font-medium text-[#A1A1AA]">
             Name
           </label>
           <input
@@ -64,12 +64,12 @@ export default function SignupForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-xl bg-[#09090B] border border-[#27272A] px-3 py-2.5 text-sm text-[#FAFAFA] outline-none focus:ring-2 focus:ring-[#27272A]"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-2 block text-left text-sm font-medium text-slate-400">
+          <label htmlFor="email" className="mb-2 block text-left text-sm font-medium text-[#A1A1AA]">
             Email
           </label>
           <input
@@ -80,12 +80,12 @@ export default function SignupForm() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-xl bg-[#09090B] border border-[#27272A] px-3 py-2.5 text-sm text-[#FAFAFA] outline-none focus:ring-2 focus:ring-[#27272A]"
           />
         </div>
 
         <div>
-          <label htmlFor="password" className="mb-2 block text-left text-sm font-medium text-slate-400">
+          <label htmlFor="password" className="mb-2 block text-left text-sm font-medium text-[#A1A1AA]">
             Password
           </label>
           <input
@@ -96,14 +96,14 @@ export default function SignupForm() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-xl bg-[#09090B] border border-[#27272A] px-3 py-2.5 text-sm text-[#FAFAFA] outline-none focus:ring-2 focus:ring-[#27272A]"
           />
         </div>
 
         <div>
           <label
             htmlFor="confirm-password"
-            className="mb-2 block text-left text-sm font-medium text-slate-400"
+            className="mb-2 block text-left text-sm font-medium text-[#A1A1AA]"
           >
             Confirm password
           </label>
@@ -115,7 +115,7 @@ export default function SignupForm() {
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full rounded-md bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full rounded-xl bg-[#09090B] border border-[#27272A] px-3 py-2.5 text-sm text-[#FAFAFA] outline-none focus:ring-2 focus:ring-[#27272A]"
           />
         </div>
 
@@ -127,16 +127,16 @@ export default function SignupForm() {
               type="checkbox"
               checked={acceptTerms}
               onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600"
+              className="w-4 h-4 rounded border-[#27272A] bg-[#09090B] text-[#FAFAFA] focus:ring-[#27272A]"
             />
-            <span className="ml-3 text-sm text-slate-400">
+            <span className="ml-3 text-sm text-[#A1A1AA]">
               I accept the
             </span>
           </label>
 
           <a
             href="/terms"
-            className="text-sm font-medium text-blue-500 hover:text-blue-400 hover:underline"
+            className="text-sm font-medium text-[#FAFAFA] hover:text-[#A1A1AA] hover:underline"
           >
             Terms and Conditions
           </a>
@@ -147,16 +147,16 @@ export default function SignupForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold tracking-wide text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60"
+          className="w-full rounded-xl bg-[#FAFAFA] !text-[#09090B] px-4 py-2.5 text-sm font-semibold tracking-wide text-[#FAFAFA] transition-all hover:bg-[#E4E4E7] focus:outline-none focus:ring-2 focus:ring-[#27272A] disabled:opacity-60"
         >
           {loading ? "Creating account..." : "Create an account"}
         </button>
 
-        <div className="text-center text-sm text-slate-400">
+        <div className="text-center text-sm text-[#A1A1AA]">
           Already have an account?{" "}
           <a
             href="/login"
-            className="font-medium text-blue-500 hover:text-blue-400 hover:underline"
+            className="font-medium text-[#FAFAFA] hover:text-[#A1A1AA] hover:underline"
           >
             Login here
           </a>

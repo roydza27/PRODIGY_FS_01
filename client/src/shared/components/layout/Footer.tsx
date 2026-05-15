@@ -61,20 +61,20 @@ const FOOTER_DATA = {
 
 export default function Footer() {
    return (
-      <footer className="bg-slate-900 dark:bg-neutral-900 pt-16 pb-8 px-4 md:px-8">
+      <footer className="bg-[#111113] dark:bg-[#111113] pt-16 pb-8 px-4 md:px-8">
          <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-12 gap-x-6 sm:gap-x-8">
 
                {/* Link Sections */}
                {FOOTER_DATA.sections.map((section) => (
                   <div key={section.title} className="space-y-6">
-                     <h3 className="text-sm text-slate-50 font-semibold">{section.title}</h3>
-                     <ul className="space-y-4 text-sm text-slate-400 font-normal">
+                     <h3 className="font-heading text-lg font-semibold tracking-tight text-[#FAFAFA]">{section.title}</h3>
+                     <ul className="space-y-4 font-mono text-[11px] uppercase tracking-widest text-[#A1A1AA] font-medium">
                         {section.links.map((link) => (
                            <li key={link.name}>
                               <a
                                  href={link.href}
-                                 className="hover:text-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded transition-all"
+                                 className="hover:text-[#FAFAFA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded transition-all"
                               >
                                  {link.name}
                               </a>
@@ -86,18 +86,18 @@ export default function Footer() {
 
                {/* Social Media & CTA Section */}
                <div className="space-y-6">
-                  <h3 className="text-sm text-slate-50 font-semibold">Social Media</h3>
+                  <h3 className="font-heading text-lg font-semibold tracking-tight text-[#FAFAFA]">Social Media</h3>
                   <ul className="flex flex-wrap gap-6">
                      {FOOTER_DATA.socials.map((social) => (
                         <li key={social.label}>
                            <a
                               href={social.href}
-                              className="flex items-center bg-slate-800 dark:bg-neutral-800 w-8 h-8 p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                              className="flex items-center bg-[#18181B] dark:bg-[#111113] w-8 h-8 p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A]"
                               aria-label={social.label}
                            >
                               <svg
                                  xmlns="http://www.w3.org/2000/svg"
-                                 className="size-full fill-slate-50"
+                                 className="size-full fill-[#FAFAFA]"
                                  viewBox={social.viewBox}
                                  aria-hidden="true"
                               >
@@ -109,11 +109,11 @@ export default function Footer() {
                   </ul>
 
                   <div className="!mt-8">
-                     <h6 className="text-sm text-slate-400">Get exclusive assets sent straight to your inbox</h6>
+                     <h6 className="font-mono text-[11px] uppercase tracking-widest text-[#A1A1AA]">Get exclusive assets sent straight to your inbox</h6>
                      <div className="mt-6">
                         <a
                            href="#"
-                           className="py-2 px-3.5 text-sm rounded-md font-semibold inline-block cursor-pointer tracking-wide text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                           className="py-2 px-3.5 text-sm rounded-xl font-semibold inline-block cursor-pointer tracking-wide text-white border border-transparent bg-[#FAFAFA] !text-[#09090B] hover:bg-[#E4E4E7] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A]"
                         >
                            Sign up
                         </a>
@@ -122,10 +122,10 @@ export default function Footer() {
                </div>
             </div>
 
-            <hr className="my-8 border-neutral-700" />
+            <hr className="my-8 border-[#27272A]" />
 
             <div className="text-center">
-               <p className="text-slate-400 text-sm">© ReadymadeUI. All rights reserved.</p>
+               <p className="text-[#A1A1AA] text-sm">© ReadymadeUI. All rights reserved.</p>
             </div>
          </div>
       </footer>
