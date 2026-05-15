@@ -1,10 +1,10 @@
-// import AppRouter from '
+import AppRouter from '@/app/router'
 
 function App() {
 
   return (
     <>
-      App Initialed
+      <AppRouter />
     </>
   )
 }
