@@ -15,6 +15,7 @@ export function NavMain({
     title: string
     url: string
     icon?: React.ReactNode
+    isActive?: boolean
   }[]
 }) {
   return (
@@ -23,12 +24,12 @@ export function NavMain({
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
-              tooltip="Quick Create"
+              tooltip="New Project"
               className="min-w-8 bg-[#FAFAFA] text-[#09090B] duration-200 ease-linear hover:bg-[#FAFAFA]/90 hover:text-[#09090B] active:bg-[#FAFAFA]/90 active:text-[#09090B]"
             >
               <CirclePlusIcon
               />
-              <span>Quick Create</span>
+              <span>New Project</span>
             </SidebarMenuButton>
             <Button
               size="icon"
@@ -37,14 +38,14 @@ export function NavMain({
             >
               <MailIcon
               />
-              <span className="sr-only">Inbox</span>
+              <span className="sr-only">Notifications</span>
             </Button>
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
+              <SidebarMenuButton tooltip={item.title} data-active={item.isActive}>
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>

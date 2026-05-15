@@ -14,7 +14,7 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react"
 export function SectionCards() {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
-      <Card className="@container/card">
+      <Card className="@container/card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#A1A1AA]/30">
         <CardHeader>
           <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Total Revenue</CardDescription>
           <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
@@ -38,7 +38,7 @@ export function SectionCards() {
           </div>
         </CardFooter>
       </Card>
-      <Card className="@container/card">
+      <Card className="@container/card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#A1A1AA]/30">
         <CardHeader>
           <CardDescription className="font-mono text-[10px] uppercase tracking-widest">New Customers</CardDescription>
           <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
@@ -62,7 +62,7 @@ export function SectionCards() {
           </div>
         </CardFooter>
       </Card>
-      <Card className="@container/card">
+      <Card className="@container/card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#A1A1AA]/30">
         <CardHeader>
           <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Active Accounts</CardDescription>
           <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">
@@ -84,7 +84,7 @@ export function SectionCards() {
           <div className="text-[#A1A1AA]">Engagement exceed targets</div>
         </CardFooter>
       </Card>
-      <Card className="@container/card">
+      <Card className="@container/card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#A1A1AA]/30">
         <CardHeader>
           <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Growth Rate</CardDescription>
           <CardTitle className="font-mono text-3xl font-medium tracking-tight tabular-nums @[250px]/card:text-4xl text-[#FAFAFA]">

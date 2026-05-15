@@ -8,7 +8,6 @@ import StatsSection from "@/features/home/components/StatsSection";
 const HomePage = () => {
   return (
     <div className="flex flex-col overflow-hidden">
-      <Banner />
 
       <main className="flex flex-col">
         <section id="hero">
@@ -41,9 +40,6 @@ const HomePage = () => {
           className="pt-32 pb-24 md:pt-40 md:pb-32 scroll-mt-24"
         >
           <CTASection />
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md">
-  Click Me
-</button>
         </section>
 
 

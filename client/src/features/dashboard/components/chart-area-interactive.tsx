@@ -166,15 +166,29 @@ export function ChartAreaInteractive() {
 
   return (
     <Card className="@container/card">
-      <CardHeader>
-        <CardTitle>Total Visitors</CardTitle>
-        <CardDescription>
-          <span className="hidden @[540px]/card:block">
-            Total for the last 3 months
-          </span>
-          <span className="@[540px]/card:hidden">Last 3 months</span>
-        </CardDescription>
-        <CardAction>
+      <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="space-y-1">
+          <CardTitle className="flex items-center gap-2">
+            <div className="relative flex size-2 items-center justify-center">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+            </div>
+
+            <span>Total Visitors</span>
+          </CardTitle>
+
+          <CardDescription>
+            <span className="hidden @[540px]/card:block">
+              Total for the last 3 months
+            </span>
+
+            <span className="@[540px]/card:hidden">
+              Last 3 months
+            </span>
+          </CardDescription>
+        </div>
+
+        <div className="flex items-center gap-2">
           <ToggleGroup
             type="single"
             value={timeRange}
@@ -182,10 +196,19 @@ export function ChartAreaInteractive() {
             variant="outline"
             className="hidden *:data-[slot=toggle-group-item]:px-4! @[767px]/card:flex"
           >
-            <ToggleGroupItem value="90d">Last 3 months</ToggleGroupItem>
-            <ToggleGroupItem value="30d">Last 30 days</ToggleGroupItem>
-            <ToggleGroupItem value="7d">Last 7 days</ToggleGroupItem>
+            <ToggleGroupItem value="90d">
+              Last 3 months
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="30d">
+              Last 30 days
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="7d">
+              Last 7 days
+            </ToggleGroupItem>
           </ToggleGroup>
+
           <Select value={timeRange} onValueChange={setTimeRange}>
             <SelectTrigger
               className="flex w-40 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate @[767px]/card:hidden"
@@ -194,19 +217,22 @@ export function ChartAreaInteractive() {
             >
               <SelectValue placeholder="Last 3 months" />
             </SelectTrigger>
+
             <SelectContent className="rounded-2xl">
               <SelectItem value="90d" className="rounded-2xl">
                 Last 3 months
               </SelectItem>
+
               <SelectItem value="30d" className="rounded-2xl">
                 Last 30 days
               </SelectItem>
+
               <SelectItem value="7d" className="rounded-2xl">
                 Last 7 days
               </SelectItem>
             </SelectContent>
           </Select>
-        </CardAction>
+        </div>
       </CardHeader>
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer

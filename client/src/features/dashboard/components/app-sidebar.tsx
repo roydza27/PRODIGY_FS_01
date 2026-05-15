@@ -35,117 +35,70 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "John Doe",
+    email: "john@nexus.app",
+    avatar: "/avatars/john.jpg",
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Overview",
       url: "#",
-      icon: <IconDashboard/>,
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: <IconListDetails/>,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: <IconChartBar/>,
+      icon: <IconDashboard />,
+      isActive: true,
     },
     {
       title: "Projects",
       url: "#",
-      icon: <IconFolder/>,
+      icon: <IconFolder />,
     },
     {
-      title: "Team",
+      title: "Insights",
       url: "#",
-      icon: <IconUsers/>,
+      icon: <IconChartBar />,
+    },
+    {
+      title: "Reports",
+      url: "#",
+      icon: <IconReport />,
+    },
+    {
+      title: "Team Workspace",
+      url: "#",
+      icon: <IconUsers />,
     },
   ],
-  navClouds: [
+  documents: [
     {
-      title: "Capture",
-      icon: <IconCamera/>,
-      isActive: true,
+      name: "Q3 Marketing Plan",
       url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      icon: <IconFileWord />,
     },
     {
-      title: "Proposal",
-      icon: <IconFileDescription/>,
+      name: "Revenue Analytics",
       url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      icon: <IconDatabase />,
     },
     {
-      title: "Prompts",
-      icon: <IconFileAi/>,
+      name: "Design System",
       url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      icon: <IconFileDescription />,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
       url: "#",
-      icon: <IconSettings/>,
+      icon: <IconSettings />,
     },
     {
-      title: "Get Help",
+      title: "Help & Support",
       url: "#",
-      icon: <IconHelp/>,
+      icon: <IconHelp />,
     },
     {
       title: "Search",
       url: "#",
-      icon: <IconSearch/>,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: <IconDatabase/>,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: <IconReport/>,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: <IconFileWord/>,
+      icon: <IconSearch />,
     },
   ],
 }
@@ -164,14 +117,14 @@ export function AppSidebar({ onLogout,...props }: React.ComponentProps<typeof Si
             >
               <a href="#">
                 <IconInnerShadowTop className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">Nexus Platform</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navClouds} />
+        <NavMain items={data.navMain} />
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

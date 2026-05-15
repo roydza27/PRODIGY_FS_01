@@ -40,7 +40,7 @@ export default function Navbar() {
 
    return (
       <nav
-         className="flex py-2 px-4 md:px-8 bg-[#111113] border-b border-[#27272A] dark:border-[#27272A] dark:bg-[#111113] min-h-[68px] relative z-20"
+         className="fixed top-0 left-0 right-0 z-50 min-h-[68px] border-b border-[#27272A] bg-[#111113]/80 px-4 py-2 backdrop-blur-xl md:px-8"
          aria-label="Main navigation"
       >
          <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-4 w-full">
@@ -96,56 +96,61 @@ export default function Navbar() {
                   </button>
                </div>
 
-               <ul className="flex flex-col gap-8 font-medium text-sm text-[#FAFAFA] dark:text-[#FAFAFA] lg:flex-row max-lg:p-6">
-                  <li>
-                     <a
-                        href="#"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                        aria-current="page"
-                     >
-                        Home
-                     </a>
-                  </li>
-                  <li>
-                     <a
-                        href="#"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                     >
-                        Features
-                     </a>
-                  </li>
-                  <li>
-                     <a
-                        href="#"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                     >
-                        Blog
-                     </a>
-                  </li>
-                  <li>
-                     <a
-                        href="#"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                     >
-                        About
-                     </a>
-                  </li>
-                  <li>
-                     <a
-                        href="#"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                     >
-                        Contact
-                     </a>
-                  </li>
-                  <li>
-                     <a
-                        href="/login"
-                        className="hover:text-[#A1A1AA] dark:hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
-                     >
-                        Log in
-                     </a>
-                  </li>
+               <ul className="flex flex-col gap-8 font-medium text-sm text-[#FAFAFA] lg:flex-row max-lg:p-6">
+                 <li>
+                   <a
+                     href="#hero"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                     aria-current="page"
+                   >
+                     Home
+                   </a>
+                 </li>
+
+                 <li>
+                   <a
+                     href="#features"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                   >
+                     Features
+                   </a>
+                 </li>
+
+                 <li>
+                   <a
+                     href="#stats"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                   >
+                     Stats
+                   </a>
+                 </li>
+
+                 <li>
+                   <a
+                     href="#content"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                   >
+                     About
+                   </a>
+                 </li>
+
+                 <li>
+                   <a
+                     href="#cta"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                   >
+                     Contact
+                   </a>
+                 </li>
+
+                 <li>
+                   <a
+                     href="/login"
+                     className="transition-colors hover:text-[#A1A1AA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#27272A] rounded"
+                   >
+                     Log in
+                   </a>
+                 </li>
                </ul>
             </div>
 

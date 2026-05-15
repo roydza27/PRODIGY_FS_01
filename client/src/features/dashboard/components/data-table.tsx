@@ -102,11 +102,11 @@ export const schema = z.object({
   reviewer: z.string(),
 })
 
+const RowContext = React.createContext<any>(null)
+
 // Create a separate component for the drag handle
-function DragHandle({ id }: { id: number }) {
-  const { attributes, listeners } = useSortable({
-    id,
-  })
+function DragHandle() {
+  const { attributes, listeners } = React.useContext(RowContext)
 
   return (
     <Button
@@ -126,12 +126,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
     id: "drag",
     header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
+    // Note: Assuming you applied the RowContext fix here earlier!
+    cell: () => <DragHandle />, 
   },
   {
     id: "select",
     header: ({ table }) => (
-      <div className="flex items-center justify-center">
+      // Changed from justify-center to justify-start
+      <div className="flex items-center justify-start pl-2">
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected()
@@ -146,7 +148,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       </div>
     ),
     cell: ({ row }) => (
-      <div className="flex items-center justify-center">
+      // Changed from justify-center to justify-start
+      <div className="flex items-center justify-start pl-2">
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -161,7 +164,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "header",
     header: "Header",
     cell: ({ row }) => {
-      return <TableCellViewer item={row.original} />
+      return (
+        // Added this wrapper div to force the content to the left edge!
+        <div className="flex w-full justify-start text-left">
+          <TableCellViewer item={row.original} />
+        </div>
+      )
     },
     enableHiding: false,
   },
@@ -169,7 +177,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "type",
     header: "Section Type",
     cell: ({ row }) => (
-      <div className="w-32">
+      <div className="w-32 text-left">
         <Badge variant="outline" className="px-1.5 text-[#A1A1AA]">
           {row.original.type}
         </Badge>
@@ -180,20 +188,22 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => (
-      <Badge variant="outline" className="px-1.5 text-[#A1A1AA]">
-        {row.original.status === "Done" ? (
-          <CircleCheckIcon className="fill-green-500 dark:fill-green-400" />
-        ) : (
-          <LoaderIcon
-          />
-        )}
-        {row.original.status}
-      </Badge>
+      <div className="text-left">
+        <Badge variant="outline" className="px-1.5 text-[#A1A1AA]">
+          {row.original.status === "Done" ? (
+            <CircleCheckIcon className="fill-green-500 dark:fill-green-400 mr-1 size-3" />
+          ) : (
+            <LoaderIcon className="mr-1 size-3" />
+          )}
+          {row.original.status}
+        </Badge>
+      </div>
     ),
   },
   {
     accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
+    // Changed from text-right to left-aligned text
+    header: "Target", 
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -204,12 +214,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             error: "Error",
           })
         }}
+        className="text-left"
       >
         <Label htmlFor={`${row.original.id}-target`} className="sr-only">
           Target
         </Label>
+        {/* Changed from text-right to text-left */}
         <Input
-          className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-[#18181B] focus-visible:border-[#27272A] focus-visible:bg-[#111113] dark:hover:bg-[#18181B] "
+          className="h-8 w-16 border-transparent bg-transparent text-left shadow-none hover:bg-[#18181B] focus-visible:border-[#27272A] focus-visible:bg-[#111113] dark:hover:bg-[#18181B]"
           defaultValue={row.original.target}
           id={`${row.original.id}-target`}
         />
@@ -218,7 +230,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
+    // Changed from text-right to left-aligned text
+    header: "Limit",
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -229,12 +242,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
             error: "Error",
           })
         }}
+        className="text-left"
       >
         <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
           Limit
         </Label>
+        {/* Changed from text-right to text-left */}
         <Input
-          className="h-8 w-16 border-transparent bg-transparent text-right shadow-none hover:bg-[#18181B] focus-visible:border-[#27272A] focus-visible:bg-[#111113] dark:hover:bg-[#18181B] "
+          className="h-8 w-16 border-transparent bg-transparent text-left shadow-none hover:bg-[#18181B] focus-visible:border-[#27272A] focus-visible:bg-[#111113] dark:hover:bg-[#18181B]"
           defaultValue={row.original.limit}
           id={`${row.original.id}-limit`}
         />
@@ -248,84 +263,87 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       const isAssigned = row.original.reviewer !== "Assign reviewer"
 
       if (isAssigned) {
-        return row.original.reviewer
+        return <div className="text-left">{row.original.reviewer}</div>
       }
 
       return (
-        <>
+        <div className="text-left">
           <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
             Reviewer
           </Label>
           <Select>
             <SelectTrigger
-              className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
+              className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate text-left"
               size="sm"
               id={`${row.original.id}-reviewer`}
             >
               <SelectValue placeholder="Assign reviewer" />
             </SelectTrigger>
-            <SelectContent align="end">
+            <SelectContent align="start">
               <SelectGroup>
                 <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                <SelectItem value="Jamik Tashpulatov">
-                  Jamik Tashpulatov
-                </SelectItem>
+                <SelectItem value="Jamik Tashpulatov">Jamik Tashpulatov</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
-        </>
+        </div>
       )
     },
   },
   {
     id: "actions",
     cell: () => (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="flex size-8 text-[#A1A1AA] data-[state=open]:bg-[#18181B]"
-            size="icon"
-          >
-            <EllipsisVerticalIcon
-            />
-            <span className="sr-only">Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-32">
-          <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuItem>Make a copy</DropdownMenuItem>
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div className="flex justify-start">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex size-8 text-[#A1A1AA] data-[state=open]:bg-[#18181B]"
+              size="icon"
+            >
+              <EllipsisVerticalIcon />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-32">
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Make a copy</DropdownMenuItem>
+            <DropdownMenuItem>Favorite</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     ),
   },
 ]
 
 function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
-  const { transform, transition, setNodeRef, isDragging } = useSortable({
+  // Extract listeners and attributes here
+  const { transform, transition, setNodeRef, isDragging, listeners, attributes } = useSortable({
     id: row.original.id,
   })
 
   return (
-    <TableRow
-      data-state={row.getIsSelected() && "selected"}
-      data-dragging={isDragging}
-      ref={setNodeRef}
-      className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
-      style={{
-        transform: CSS.Transform.toString(transform),
-        transition: transition,
-      }}
-    >
-      {row.getVisibleCells().map((cell) => (
-        <TableCell key={cell.id}>
-          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-        </TableCell>
-      ))}
-    </TableRow>
+    <RowContext.Provider value={{ listeners, attributes }}>
+      <TableRow
+        data-state={row.getIsSelected() && "selected"}
+        data-dragging={isDragging}
+        ref={setNodeRef}
+        className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
+        style={{
+          // MUST use Translate instead of Transform for table rows!
+          transform: CSS.Translate.toString(transform), 
+          transition: transition,
+        }}
+      >
+        {row.getVisibleCells().map((cell) => (
+          <TableCell key={cell.id}>
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </TableCell>
+        ))}
+      </TableRow>
+    </RowContext.Provider>
   )
 }
 
@@ -516,9 +534,15 @@ export function DataTable({
                     <TableCell
                       colSpan={columns.length}
                       className="h-24 text-center"
-                    >
-                      No results.
-                    </TableCell>
+                    ><div className="flex flex-col items-center justify-center space-y-3 py-10">
+                        <div className="flex size-12 items-center justify-center rounded-full bg-[#18181B]">
+                          <EllipsisVerticalIcon className="size-5 text-[#A1A1AA]" />
+                        </div>
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="font-medium text-[#FAFAFA]">No items found</span>
+                          <span className="text-sm text-[#A1A1AA]">Adjust your filters or try a different search term.</span>
+                        </div>
+                      </div></TableCell>
                   </TableRow>
                 )}
               </TableBody>

@@ -32,7 +32,7 @@ export function NavDocuments({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="text-sm text-slate-400!">
-        Documents
+        Workspaces
       </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
